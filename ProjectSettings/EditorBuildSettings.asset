@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/FrameDemo/Scene/Init.unity
+    guid: 570e575d76093144c84dac9b687bbadb
+  - enabled: 1
+    path: Assets/FrameDemo/Scene/MainUI.unity
+    guid: ce3c469579122814cbaa9cdc1742aff9
+  - enabled: 1
+    path: Assets/FrameDemo/Scene/MainScene.unity
+    guid: 0559bdb4afa3a8044a0b78758d963337
+  m_configObjects:
+    Unity.XR.PXR.Settings: {fileID: 11400000, guid: dd4885e6f750041cf953575691a7fe6a, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 27c06314847734844ad18b37e6857b27, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: dfa4629c3e3624e58a4a0879ca1af777, type: 2}
