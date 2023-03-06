@@ -32,7 +32,7 @@ namespace LabData
         private Func<string> _userId;
         private SimpleApplicationLifecycle _applicationLifecycle;
         // private string labDataSavePath => Application.dataPath + "/TestData";
-        private string labDataSavePath => Path.Combine(LabTools.DataPath, "TestData"); 
+        private string labDataSavePath => LabTools.DataPath + "/TestData";
         // private readonly List<DataWriter> _dataWriters = new List<DataWriter>();
         private string _localSaveDataTimeLayout;
         private ConcurrentQueue<LabDataBase> _dataQueue;
@@ -57,7 +57,7 @@ namespace LabData
             #region 初始化本地存储
             _localSaveDataTimeLayout = LabTools.GetConfig<LabDataConfig>().LocalSaveDataTimeLayout;
             _userId = userId;
-            _saveDataPath = Application.dataPath + "/Output";
+            _saveDataPath = LabTools.DataPath + "/Output";
             LabTools.CreatSaveDataFolder(_saveDataPath);
             var userStr = _userId.Invoke().PadLeft(2, '0');
             _saveDataPath = string.Join("_", _saveDataPath + "/" + DateTime.Now.ToString(_localSaveDataTimeLayout), userStr);
@@ -80,15 +80,15 @@ namespace LabData
             _sendToServer = LabTools.GetConfig<LabDataConfig>().SendToServer;
             options.EndpointAddress = LabTools.GetConfig<LabDataConfig>().ServerPath;
 
-
-            if (!Directory.Exists("TestStore"))
+            string testStorePath = Path.Combine(LabTools.DataPath, "TestStore");
+            if (!Directory.Exists(testStorePath))
             {
-                Directory.CreateDirectory("TestStore");
+                Directory.CreateDirectory(testStorePath);
             }
             _applicationLifecycle = new SimpleApplicationLifecycle();
 
 
-            _client = new DataSyncClient(new UnityApplicationFolderProvider(labDataSavePath + "/TestStore"),
+            _client = new DataSyncClient(new UnityApplicationFolderProvider(testStorePath),
                 _applicationLifecycle, options, _userId);
 
             _client.Init();

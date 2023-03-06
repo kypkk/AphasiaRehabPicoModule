@@ -168,31 +168,31 @@ namespace LabData
     /// <returns></returns>
     public static T GetData<T>(string dataName, string filePath = "/GameData") where T : LabDataBase
     {
-      // folder
-      string path = DataPath + filePath;
-      if (filePath.StartsWith("/StreamingAssets/")) // Android 的 Streaming Assets
-      {
-        path = Path.Combine(Application.streamingAssetsPath, filePath.Replace("/StreamingAssets/", ""));
-      }
-      // combine file name
-      path = Path.Combine(path, typeof(T).Name, dataName + ".json");
+        // folder
+        string path = DataPath + filePath;
+        if(filePath.StartsWith("/StreamingAssets/")) // Android 的 Streaming Assets
+        {
+            path = Path.Combine(Application.streamingAssetsPath, filePath.Replace("/StreamingAssets/", ""));
+        }
+        // combine file name
+        path = Path.Combine(path, typeof(T).Name, dataName + ".json");  
 
-      // StreamReader sr = new StreamReader(path);
-      // var data = JsonConvert.DeserializeObject<T>(sr.ReadToEnd());
-      // sr.Close();
-      var req = UnityWebRequest.Get(path);
-      req.SendWebRequest();
-      while (!req.isDone) { }
+        // StreamReader sr = new StreamReader(path);
+        // var data = JsonConvert.DeserializeObject<T>(sr.ReadToEnd());
+        // sr.Close();
+        var req = UnityWebRequest.Get(path);
+        req.SendWebRequest();
+        while (!req.isDone) { }
 
-      if (req.isNetworkError || req.isHttpError)
-      {
-        Debug.LogError("数据文件不存在！" + path);
-        Debug.LogError("Reason: " + req.error);
-        return default;
-      }
+        if(req.isNetworkError || req.isHttpError)
+        {
+            Debug.LogError("数据文件不存在！"+path);
+            Debug.LogError("Reason: "+req.error);
+            return default;
+        }
 
-      var data = JsonConvert.DeserializeObject<T>(req.downloadHandler.text);
-      return data;
+        var data = JsonConvert.DeserializeObject<T>(req.downloadHandler.text);
+        return data;
     }
 
     /// <summary>

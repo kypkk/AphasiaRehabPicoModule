@@ -14,10 +14,9 @@ namespace LabData
         {
             return JsonConvert.SerializeObject(o, new JsonSerializerSettings()
             {
-                ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
-                NullValueHandling = NullValueHandling.Include
-                
-            });           
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore, // 改 ignore 避免循環引用 (Force 會直接閃退不報錯)
+                NullValueHandling = NullValueHandling.Include                
+            });         
         }
         ///// <summary>
         ///// 获取这个Key的翻译内容
