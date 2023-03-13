@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "PA7J10MGG7090091W",
         "name": "com.DefaultCompany.kypkk_pico",
-        "processId": 27043,
+        "processId": 6070,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -348,6 +348,36 @@
             "deviceId": "PA7J10MGG7090091W",
             "name": "com.DefaultCompany.kypkk_pico",
             "processId": 27043,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090091W",
+            "name": "com.DefaultCompany.kypkk_pico",
+            "processId": 6112,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090091W",
+            "name": "com.DefaultCompany.kypkk_pico",
+            "processId": 6773,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090091W",
+            "name": "com.DefaultCompany.kypkk_pico",
+            "processId": 32076,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090091W",
+            "name": "com.DefaultCompany.kypkk_pico",
+            "processId": 32550,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090091W",
+            "name": "com.DefaultCompany.kypkk_pico",
+            "processId": 6070,
             "exited": false
         }
     ],
