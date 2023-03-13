@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "PA7J10MGG7090091W",
         "name": "com.DefaultCompany.kypkk_pico",
-        "processId": 26414,
+        "processId": 27043,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -342,6 +342,12 @@
             "deviceId": "PA7J10MGG7090091W",
             "name": "com.DefaultCompany.kypkk_pico",
             "processId": 26414,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090091W",
+            "name": "com.DefaultCompany.kypkk_pico",
+            "processId": 27043,
             "exited": false
         }
     ],
