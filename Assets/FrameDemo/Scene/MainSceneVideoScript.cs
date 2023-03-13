@@ -28,10 +28,17 @@ public class MainSceneVideoScript : MonoBehaviour
     public GameObject EntryUI;
     public GameObject GameUI;
     public GameObject RuleUI;
+    public GameObject ResultUI;
+
+    // check and cross buttons
+    public Button check_button;
+    public Button cross_button;
 
     // score
     int score = 0;
     int times = 0;
+    string resultString;
+    public Text resultText;
 
     void Start()
     {
@@ -73,6 +80,9 @@ public class MainSceneVideoScript : MonoBehaviour
     public IEnumerator playAudio(){
         RuleUI.SetActive(false);
         GameUI.SetActive(true);
+        check_button.gameObject.SetActive(false);
+        cross_button.gameObject.SetActive(false);
+        
         Time.timeScale = 1f;
 
         yield return new WaitForSeconds(3f);
@@ -92,6 +102,8 @@ public class MainSceneVideoScript : MonoBehaviour
         problemPlayer.clip = problemClip;
         yield return new WaitForSeconds(15f);
         yourturn.Play();
+        check_button.gameObject.SetActive(true);
+        cross_button.gameObject.SetActive(true);
         
             
         
@@ -105,7 +117,11 @@ public class MainSceneVideoScript : MonoBehaviour
         Hint.clip = CorrectClip;
         Hint.Play();
         if(times >= 10){
-
+            resultString = score.ToString() + " / 10";
+            GameUI.SetActive(false);
+            ResultUI.SetActive(true);
+            resultText.text = resultString;
+            Time.timeScale = 0f;
         }else{
             StartCoroutine(playAudio());
         }
@@ -118,7 +134,11 @@ public class MainSceneVideoScript : MonoBehaviour
         Hint.clip = WrongClip;
         Hint.Play();
         if(times >= 10){
-
+            resultString = score.ToString() + " / 10";
+            GameUI.SetActive(false);
+            ResultUI.SetActive(true);
+            resultText.text = resultString;
+            Time.timeScale = 0f;
         }else{
             StartCoroutine(playAudio());
         }
@@ -126,8 +146,3 @@ public class MainSceneVideoScript : MonoBehaviour
     }
 
 }
-
-// 輪到你說了
-// 下一題
-// 正確與否的按鈕
-// score
