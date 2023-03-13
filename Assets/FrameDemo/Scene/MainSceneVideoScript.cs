@@ -36,7 +36,6 @@ public class MainSceneVideoScript : MonoBehaviour
     void Start()
     {
         yourturn.clip = yourturnClip;
-        nextTask.clip = nextTaskClip;
         Time.timeScale = 0f;
     }
 
