@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "PA7J10MGG7090091W",
     "m_SelectedPackage": {
-        "deviceId": "PA7J10MGG7090091W",
-        "name": "com.DefaultCompany.kypkk_pico",
-        "processId": 6070,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -107,278 +107,26 @@
         {
             "deviceId": "PA7J10MGG7090091W",
             "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 5529,
-            "exited": false
+            "processId": 26209,
+            "exited": true
         },
         {
             "deviceId": "PA7J10MGG7090091W",
             "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 8010,
-            "exited": false
+            "processId": 26707,
+            "exited": true
         },
         {
             "deviceId": "PA7J10MGG7090091W",
             "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 9086,
-            "exited": false
+            "processId": 27237,
+            "exited": true
         },
         {
             "deviceId": "PA7J10MGG7090091W",
             "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 11279,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 13941,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 15218,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 20315,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 5749,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 6852,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 7532,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 4741,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 5313,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 5965,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 6587,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 7019,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 8217,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 9066,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 10062,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 10863,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 11410,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 11777,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 12270,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 12774,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 13312,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 13843,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 14814,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 15244,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 16821,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 18333,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 18883,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 19448,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 20678,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 21810,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 22388,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 22740,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 23270,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 24999,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 25299,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 25877,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 26414,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 27043,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 6112,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 6773,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 32076,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 32550,
-            "exited": false
-        },
-        {
-            "deviceId": "PA7J10MGG7090091W",
-            "name": "com.DefaultCompany.kypkk_pico",
-            "processId": 6070,
-            "exited": false
+            "processId": 28413,
+            "exited": true
         }
     ],
     "m_Tags": {
