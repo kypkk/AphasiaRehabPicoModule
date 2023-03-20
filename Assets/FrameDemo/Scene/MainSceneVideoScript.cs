@@ -23,6 +23,8 @@ public class MainSceneVideoScript : MonoBehaviour
     public AudioClip yourturnClip;
     public AudioClip CorrectClip;
     public AudioClip WrongClip;
+    public int lastIndex = -1;
+    public int index = -1;
 
     // all of the UIs
     public GameObject EntryUI;
@@ -87,13 +89,22 @@ public class MainSceneVideoScript : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         if(difficulty == 1){
-            int index = Random.Range(0, easy_problem.Length);
+            while(index == lastIndex){
+                index = Random.Range(0, easy_problem.Length);
+            }
+            lastIndex = index;
             problemClip = easy_problem[index];
         }else if(difficulty == 2){
-            int index = Random.Range(0, medium_problem.Length);
+            while(index == lastIndex){
+                index = Random.Range(0, medium_problem.Length);
+            }
+            lastIndex = index;
             problemClip = medium_problem[index];
         }else{
-            int index = Random.Range(0, hard_problem.Length);
+            while(index == lastIndex){
+                index = Random.Range(0, hard_problem.Length);
+            }
+            lastIndex = index;
             problemClip = hard_problem[index];
         }
 
