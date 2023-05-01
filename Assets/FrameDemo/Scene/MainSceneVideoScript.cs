@@ -83,7 +83,9 @@ public class MainSceneVideoScript : MonoBehaviour
         RuleUI.SetActive(false);
         GameUI.SetActive(true);
         check_button.gameObject.SetActive(false);
+        check_button.interactable = false;
         cross_button.gameObject.SetActive(false);
+        cross_button.interactable = false;
         
         Time.timeScale = 1f;
 

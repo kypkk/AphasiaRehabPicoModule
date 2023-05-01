@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "PA7J10MGG7090117W",
+    "m_SelectedDeviceId": "PA7J10MGG7090102W",
     "m_SelectedPackage": {
-        "deviceId": "PA7J10MGG7090117W",
-        "name": "com.DefaultCompany.kypkk_pico",
-        "processId": 3819,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -108,6 +108,12 @@
             "deviceId": "PA7J10MGG7090117W",
             "name": "com.DefaultCompany.kypkk_pico",
             "processId": 3819,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090117W",
+            "name": "com.DefaultCompany.kypkk_pico",
+            "processId": 24493,
             "exited": false
         },
         {
