@@ -121,7 +121,7 @@ public class GameApplication : MonoSingleton<GameApplication>
     /// <summary>
     /// Unity MonoBehaviour 特殊函式：當關閉時呼叫
     /// </summary>
-    protected override void OnApplicationQuit()
+    protected void OnApplicationQuit()
     {
         if (!_isOnApplicationQuit)
         {
@@ -129,7 +129,7 @@ public class GameApplication : MonoSingleton<GameApplication>
             _isOnApplicationQuit = true;
             StartCoroutine(WaitforQuitGame());
         }
-        base.OnApplicationQuit();
+        OnApplicationQuit();
     }
 }
 

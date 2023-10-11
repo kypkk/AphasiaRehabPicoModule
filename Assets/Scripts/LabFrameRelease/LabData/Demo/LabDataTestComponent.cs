@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class LabDataTestComponent : MonoBehaviour
 {
-    public static  ILabDataManager LabDataManager { get; set; }
+    public static ILabDataManager LabDataManager { get; set; } = new LabDataManager();
     // Start is called before the first frame update
 
     void Awake()
     {
-        LabDataManager = new LabDataManager();
+        // LabDataManager = new LabDataManager();
     }
 
     public void OnDisable()

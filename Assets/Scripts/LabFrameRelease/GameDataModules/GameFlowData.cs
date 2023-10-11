@@ -19,6 +19,10 @@ namespace GameData
         /// <summary>
         /// 用户ID
         /// </summary>
-        public string UserId { get; set; } = "Test01";
+        public string UserId { get; set; } = "pronounceGame_Test01";
+
+        public GameLevel level = GameLevel.easy;
+
+        public bool AutoRecordVoice { get; set; } = true;
     }
 }

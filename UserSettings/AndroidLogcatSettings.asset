@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "PA7J10MGG7090102W",
+    "m_SelectedDeviceId": "PA7J10MGG8280008W",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "PA7J10MGG8280008W",
+        "name": "com.xrlab.SayIt",
+        "processId": 18964,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -139,6 +139,288 @@
             "name": "com.DefaultCompany.kypkk_pico",
             "processId": 31171,
             "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG7090102W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 10589,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG7090102W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 12033,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG7090102W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 17100,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG7090102W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 19053,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG7090102W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 21483,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090102W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 23305,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090102W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 26653,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090102W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 28988,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 17912,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 18539,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 19528,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 4616,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 5909,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 7449,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 8446,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 9716,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 11384,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 12675,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayItvr",
+            "processId": 8782,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.DefaultCompany.SayItvr",
+            "processId": 9221,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.Aphasia.SayItvr",
+            "processId": 6257,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090048W",
+            "name": "com.Aphasia.SayItvr",
+            "processId": 6668,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7180143W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 6959,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7180143W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 7318,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7180143W",
+            "name": "com.DefaultCompany.SayIt",
+            "processId": 10262,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7180143W",
+            "name": "com.DefaultCompany.SayItvr",
+            "processId": 20400,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7180143W",
+            "name": "com.DefaultCompany.SayItvr",
+            "processId": 20721,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7180143W",
+            "name": "com.DefaultCompany.SayItvr",
+            "processId": 22290,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7180143W",
+            "name": "com.DefaultCompany.SayItvr",
+            "processId": 5992,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7180143W",
+            "name": "com.DefaultCompany.SayItvr",
+            "processId": 6473,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7180143W",
+            "name": "com.DefaultCompany.SayItvr",
+            "processId": 7750,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090114W",
+            "name": "com.Aphasia.SayItvr",
+            "processId": 6888,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090114W",
+            "name": "com.Aphasia.SayItvr",
+            "processId": 7331,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090114W",
+            "name": "com.Aphasia.SayItvr",
+            "processId": 11690,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090114W",
+            "name": "com.Aphasia.SayItvr",
+            "processId": 13920,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090114W",
+            "name": "com.xrlab.SayIt",
+            "processId": 16856,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG7090114W",
+            "name": "com.xrlab.SayIt",
+            "processId": 17584,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 6732,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 7979,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 14265,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 14424,
+            "exited": true
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 15062,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 16682,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 17123,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 17361,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 18124,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 18964,
+            "exited": false
         }
     ],
     "m_Tags": {

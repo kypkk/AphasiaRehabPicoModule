@@ -7,12 +7,12 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using DataSync;
+using I2.Loc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Schema;
 using Newtonsoft.Json.Schema.Generation;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace LabData
 {
@@ -24,91 +24,97 @@ namespace LabData
             return data is T @base ? @base : null;
         }
 
-    /// <summary>
-    /// 資料儲存位置。
-    /// see https://docs.unity3d.com/ScriptReference/Application-persistentDataPath.html
-    /// </summary>
-    public static string DataPath =>
-#if UNITY_ANDROID
-        Application.persistentDataPath;
-#else
-        Application.dataPath;
-#endif
+        public static string DataPath => Path.Combine("/storage/emulated/0/LabData/AphasiaSayItVR/ForSend", DateTime.Now.ToString("yyyyMMddHH"))
+// #if UNITY_ANDROID
+//             Application.persistentDataPath +"/LabData/ForSend"
+// #else        
+//             Application.dataPath + "/LabData/ForSend"
+// #endif            
+        ;
 
-    /// <summary>
-    /// 在 DataPath 內新增資料夾
-    /// </summary>
-    /// <param name="folderName"></param>
-    /// <param name="isNew">如果資料夾已存在，用 "名稱_時間" 新增一個；否則回傳原路徑</param>
-        public static string CreatSaveDataFolder(string folderName, bool isNew = false)
+        /// <summary>
+        /// 创建存储数据的文件夹
+        /// </summary>
+        /// <param name="floderName"></param>
+        /// <param name="isNew"></param>
+        public static string CreatSaveDataFolder(string floderName, bool isNew = false)
         {
-            string finalPath = Path.Combine(DataPath, folderName);
-            if (Directory.Exists(finalPath))
+            if (Directory.Exists(floderName))
             {
                 if (isNew)
                 {
-                    var tempPath = folderName + "_" + DateTime.Now.Millisecond.ToString();
+                    var tempPath = floderName + "_" + DateTime.Now.Millisecond.ToString();
                     Directory.CreateDirectory(tempPath);
                     return tempPath;
                 }
-                else
-                {
-                    // Debug.Log("Folder Exist!");
-                    return folderName;
-                }
+
+                Debug.Log("Folder Has Existed!");
+                return floderName;
             }
             else
             {
-                Directory.CreateDirectory(folderName);
-                Debug.Log("Success Create: " + folderName);
-                return folderName;
+                Directory.CreateDirectory(floderName);
+                Debug.Log("Success Create: " + floderName);
+                return floderName;
             }
         }
-
         /// <summary>
-        /// 建立 (空的) 文件
+        /// 创建文件
         /// </summary>
         /// <param name="path"></param>
-        public static void CreateData(string path)
+        public static void CreatData(string path)
         {
             if (!File.Exists(path))
             {
                 File.Create(path).Dispose();
+
                 Debug.Log("Success Create: " + path);
-            }            
+            }
+        }
+        /// <summary>
+        /// 获取Enum的Description内容
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string GetEnumDescription<T>(T obj)
+        {
+            var type = obj.GetType();
+            FieldInfo field = type.GetField(Enum.GetName(type, obj));
+            DescriptionAttribute descAttr = Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) as DescriptionAttribute;
+            if (descAttr == null)
+            {
+                return string.Empty;
+            }
+
+            return descAttr.Description;
         }
 
         /// <summary>
-        /// 根據 T 的類型讀入相應的 config (路徑為 {LabTool.DataPath}/{gameDataPath}/{T}.json)
-        /// 若不存在，會依照 default constructor 去寫一個
+        /// 根据Config类型反序列化，如果是需要覆盖旧的config，传入true
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="isOverride">若需要覆蓋舊的 config，傳入 true</param>
-        /// <param name="gameDataPath">預設為 /GameData </param>
+        /// <param name="isNew"></param>
+        /// <param name="filePath"></param>
         /// <returns></returns>
-        public static T GetConfig<T>(bool isOverride = false, string gameDataPath = "/GameData") where T : class, new()
+        public static T GetConfig<T>(bool isNew = false, string filePath = "/GameData") where T : class, new()
         {
-            // 先設定為 ConfigData 資料夾位置，並檢查是否存在
-            var path = DataPath + gameDataPath + "/ConfigData";
-      
+            var path = DataPath + filePath + "/" + "ConfigData";
+
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
 
-            // 路徑
-            path = Path.Combine(path, typeof(T).Name + ".json");
+            path = path + "/" + typeof(T).Name + ".json";
+            Debug.Log(path + "\n" + File.Exists(path) + "\n" + isNew);
 
-            // override: 先刪除檔案
-            if (isOverride && File.Exists(path))
+            if (isNew && File.Exists(path))
             {
                 File.Delete(path);
             }
-
-            // 如果不存在就寫入
             if (!File.Exists(path))
             {
-                // 創建一個新的 T，序列化
                 var json = JsonConvert.SerializeObject(new T());
                 var fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 StreamWriter sw = new StreamWriter(fs);
@@ -116,11 +122,23 @@ namespace LabData
                 sw.Close();
             }
 
-            // 讀入設定檔並回傳
             StreamReader sr = new StreamReader(path);
             var data = JsonConvert.DeserializeObject<T>(sr.ReadToEnd());
             sr.Close();
             return data;
+        }
+
+        /// <summary>
+        /// 创建对应数据的文件夹
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public static void CreateDataFolder<T>(string filePath = "/GameData") where T : LabDataBase
+        {
+            var path = DataPath + filePath + "/" + typeof(T).Name;
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
         }
 
         /// <summary>
@@ -159,62 +177,54 @@ namespace LabData
             }
         }
 
-    /// <summary>
-    /// 通过类型T和名字获取指定的数据
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="t"></param>
-    /// <param name="dataName"></param>
-    /// <returns></returns>
-    public static T GetData<T>(string dataName, string filePath = "/GameData") where T : LabDataBase
-    {
-        // folder
-        string path = DataPath + filePath;
-        if(filePath.StartsWith("/StreamingAssets/")) // Android 的 Streaming Assets
+        /// <summary>
+        /// 通过类型T和名字获取指定的数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
+        /// <param name="dataName"></param>
+        /// <returns></returns>
+        public static T GetData<T>(string dataName, string filePath = "/GameData") where T : LabDataBase
         {
-            path = Path.Combine(Application.streamingAssetsPath, filePath.Replace("/StreamingAssets/", ""));
-        }
-        // combine file name
-        path = Path.Combine(path, typeof(T).Name, dataName + ".json");  
+            var path = DataPath + filePath + "/" + typeof(T).Name + "/" + dataName + ".json";
 
-        // StreamReader sr = new StreamReader(path);
-        // var data = JsonConvert.DeserializeObject<T>(sr.ReadToEnd());
-        // sr.Close();
-        var req = UnityWebRequest.Get(path);
-        req.SendWebRequest();
-        while (!req.isDone) { }
-
-        if(req.isNetworkError || req.isHttpError)
-        {
-            Debug.LogError("数据文件不存在！"+path);
-            Debug.LogError("Reason: "+req.error);
-            return default;
-        }
-
-        var data = JsonConvert.DeserializeObject<T>(req.downloadHandler.text);
-        return data;
-    }
-
-    /// <summary>
-    /// 從 JSON 解析 T
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="t"></param>
-    /// <param name="dataName"></param>
-    /// <returns></returns>
-    public static T GetDataByString<T>(string jsonString) where T : class
-        {
-            JSchema schema = new JSchemaGenerator().Generate(typeof(T));
-            Debug.Log(schema);
-            JToken token = JToken.Parse(jsonString);
-
-            if (token.IsValid(schema))
+            if (File.Exists(path))
             {
-                return JsonConvert.DeserializeObject<T>(jsonString);
+                StreamReader sr = new StreamReader(path);
+                var data = JsonConvert.DeserializeObject<T>(sr.ReadToEnd());
+                sr.Close();
+                return data;
+
             }
             else
             {
-                throw new InvalidDataException("無法解析此字串");
+                Debug.LogError("数据文件不存在！");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 通过类型T和名字获取指定的数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
+        /// <param name="dataName"></param>
+        /// <returns></returns>
+        public static T GetDataByString<T>(string file) where T : class
+        {
+            JSchema schema = new JSchemaGenerator().Generate(typeof(T));
+            Debug.Log(schema);
+            JToken token = JToken.Parse(file);
+
+            if (token.IsValid(schema))
+            {
+                return JsonConvert.DeserializeObject<T>(file);
+            }
+            else
+            {
+
+                Debug.LogError("字符串不匹配");
+                return null;
             }
 
         }
@@ -271,23 +281,23 @@ namespace LabData
             return null;
         }
 
-        ///// <summary>
-        /////通过Key获取多语言对应的值
-        ///// </summary>
-        ///// <param name="key"></param>
-        ///// <returns></returns>
-        //public static string GetCurrentCultureValue(params string[] key)
-        //{
-        //    return string.Join("", key.Select(p =>
-        //    {
-        //        var translate = LocalizationManager.GetTranslation(p);
-        //        if (p != null && string.IsNullOrEmpty(translate))
-        //        {
-        //            return p;
-        //        }
-        //        return translate;
-        //    }));
-        //}
+        /// <summary>
+        ///通过Key获取多语言对应的值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string GetCurrentCultureValue(params string[] key)
+        {
+            return string.Join("", key.Select(p =>
+            {
+                var translate = LocalizationManager.GetTranslation(p);
+                if (p != null && string.IsNullOrEmpty(translate))
+                {
+                    return p;
+                }
+                return translate;
+            }));
+        }
 
         public static Type GetScriptType(string name)
         {

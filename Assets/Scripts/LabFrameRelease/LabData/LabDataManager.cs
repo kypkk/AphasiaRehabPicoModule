@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using DataSync;
 using UnityEngine;
+using TestGameFrame;
 
 
 
@@ -31,7 +32,6 @@ namespace LabData
         private LabDataScope Scope { get; set; }
         private Func<string> _userId;
         private SimpleApplicationLifecycle _applicationLifecycle;
-        // private string labDataSavePath => Application.dataPath + "/TestData";
         private string labDataSavePath => LabTools.DataPath + "/TestData";
         // private readonly List<DataWriter> _dataWriters = new List<DataWriter>();
         private string _localSaveDataTimeLayout;
@@ -42,13 +42,27 @@ namespace LabData
 
 
 
+
+        /// <summary>
+        /// 数据采集,传入数据,频率,是否循环采集
+        /// </summary>
+        /// <param name="data"></param> 
+        /// <param name="loop"></param>
+        /// <param name="frequency"></param>
+        [Obsolete("功能弃用，新的使用方法请查看Demo")]
+        public void DataCollect(LabDataBase data, bool loop = true, int frequency = 200)
+        {
+
+        }
+
         /// <summary>
         /// 传入UserID初始化LabDataCollect
         /// </summary>
         /// <param name="userId"></param>
         public void LabDataCollectInit(Func<string> userId)
         {
-
+            Debug.Log("test userid");
+            Debug.Log("test userid" + userId);
             if (_isClientInit)
             {
                 return;
@@ -60,25 +74,26 @@ namespace LabData
             _saveDataPath = LabTools.DataPath + "/Output";
             LabTools.CreatSaveDataFolder(_saveDataPath);
             var userStr = _userId.Invoke().PadLeft(2, '0');
-            _saveDataPath = string.Join("_", _saveDataPath + "/" + DateTime.Now.ToString(_localSaveDataTimeLayout), userStr);
+            _saveDataPath = Path.Combine(_saveDataPath, userStr + "_" + DateTime.Now.ToString(_localSaveDataTimeLayout));
             _saveDataPath = LabTools.CreatSaveDataFolder(_saveDataPath);
             #endregion
 
             #region 初始化上传服务
 
-            var options = new DataSyncClientOptions()
-            {
-                EndpointAddress = "http://localhost:4000/api/data",
-                ProjectId = LabTools.GetConfig<LabDataConfig>().ProjectId,
-                LogFilePath = labDataSavePath + "/ log.txt"
-            };
+            // var options = new DataSyncClientOptions()
+            // {
+            //     EndpointAddress = "http://localhost:4000/api/data",
+            //     ProjectId = LabTools.GetConfig<LabDataConfig>().ProjectId,
+            //     LogFilePath = labDataSavePath + "/ log.txt"
+            // };
 
-            //Docker
-            options.EndpointAddress = "http://localhost/api/data";
+            // //Docker
+            // options.EndpointAddress = "http://localhost/api/data";
 
-            //server
-            _sendToServer = LabTools.GetConfig<LabDataConfig>().SendToServer;
-            options.EndpointAddress = LabTools.GetConfig<LabDataConfig>().ServerPath;
+            // //server
+            // _sendToServer = LabTools.GetConfig<LabDataConfig>().SendToServer;
+            // options.EndpointAddress = LabTools.GetConfig<LabDataConfig>().ServerPath;
+
 
             string testStorePath = Path.Combine(LabTools.DataPath, "TestStore");
             if (!Directory.Exists(testStorePath))
@@ -88,18 +103,21 @@ namespace LabData
             _applicationLifecycle = new SimpleApplicationLifecycle();
 
 
-            _client = new DataSyncClient(new UnityApplicationFolderProvider(testStorePath),
-                _applicationLifecycle, options, _userId);
+            // _applicationLifecycle = new SimpleApplicationLifecycle();
 
-            _client.Init();
+
+            // _client = new DataSyncClient(new UnityApplicationFolderProvider(labDataSavePath + "/TestStore"),
+            //     _applicationLifecycle, options, _userId);
+
+            // _client.Init();
 
             _isClientInit = true;
 
-            StartUpload();
+            // StartUpload();
 
             #endregion
 
-            Application.wantsToQuit += () => !IsClientRunning;
+            // Application.wantsToQuit += () => !IsClientRunning;
             _dataWriterDic = new Dictionary<Type, LabDataWriter>();
             _dataQueue = new ConcurrentQueue<LabDataBase>();
             _writeThread = new Thread(Queue2Send);
@@ -111,10 +129,10 @@ namespace LabData
         {
             await Task.Run(() =>
             {
-                while(_dataQueue.Count > 0)
+                while (_dataQueue.Count > 0)
                 {
-                    Debug.Log(( $"Remain {0} Data to be stored", _dataQueue.Count));
-                    Thread.Sleep(100);                   
+                    Debug.Log(($"Remain {0} Data to be stored", _dataQueue.Count));
+                    Thread.Sleep(100);
                 }
             });
             foreach (var item in _dataWriterDic)
@@ -133,7 +151,11 @@ namespace LabData
         /// </summary>
         public void SendData(LabDataBase data)
         {
-            _dataQueue.Enqueue(data);
+            // _dataQueue.Enqueue(data);
+            
+            string path = Path.Combine(_saveDataPath, "AphasiaVRPico_AphasiaSayItVR_"+ "1196_" + data.GetType().Name + ".json");
+            Debug.Log(path);
+            File.AppendAllText(path, data.ToJson() + "\r\n"); // JC ver
             GetDataAction?.Invoke(data);
         }
 
@@ -176,7 +198,7 @@ namespace LabData
             if (!_dataWriterDic.ContainsKey(datatype))
             {
                 string dataPath = string.Join("_", _saveDataPath + "/", _userId.Invoke().PadLeft(2, '0'), data.GetType().Name + ".json");
-                LabTools.CreateData(dataPath);
+                LabTools.CreatData(dataPath);
                 _dataWriterDic.Add(datatype, new LabDataWriter(dataPath));
             }
 
@@ -212,28 +234,30 @@ namespace LabData
 
     }
 
+    // public class LabDataWriter
+    // {
+    //     private readonly FileStream _fs;
+    //     private readonly StreamWriter _sw;
+    //     public LabDataWriter(string path)
+    //     {
+    //         _fs = new FileStream(path, FileMode.Append, FileAccess.Write);
+    //         _sw = new StreamWriter(_fs);
+
+    //     }
+    //     public void WriteData(LabDataBase data)
+    //     {
+    //         _sw.WriteLine(data.ToJson());
+    //     }
+
+    //     public void WriterDispose()
+    //     {
+    //         _sw.Flush();
+    //         _fs.Close();
+    //     }
+    // }
+
     public class LabDataWriter
     {
-        //// 202210 使用 StreamWriter 可能造成資料寫入不完整
-        // private readonly FileStream _fs;
-        // private readonly StreamWriter _sw;
-        // public LabDataWriter(string path)
-        // {
-        //     _fs = new FileStream(path, FileMode.Append, FileAccess.Write);
-        //     _sw = new StreamWriter(_fs);
-
-        // }
-        // public void WriteData(LabDataBase data)
-        // {
-        //     _sw.WriteLine(data.ToJson());
-        // }
-
-        // public void WriterDispose()
-        // {
-        //     _sw.Flush();
-        //     _fs.Close();
-        // }
-        
         private string path;
         public LabDataWriter(string path)
         {
@@ -245,7 +269,7 @@ namespace LabData
         }
         public void WriterDispose()
         {
-            
+
         }
     }
 }

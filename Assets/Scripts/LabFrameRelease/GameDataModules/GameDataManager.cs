@@ -16,18 +16,19 @@ public class GameDataManager : MonoSingleton<GameDataManager>, IGameManager
     /// <summary>
     /// LabData
     /// </summary>
-    public static ILabDataManager LabDataManager { get; set; }
+    public static ILabDataManager LabDataManager => LabDataTestComponent.LabDataManager;
 
     /// <summary>
     /// 遊戲數據
     /// </summary>
-    public static GameFlowData FlowData { get; set; }
+    public static GameFlowData FlowData { get; set; } = new GameFlowData();
 
     int IGameManager.Weight => GlobalData.GameDataManagerWeight;
 
     void IGameManager.ManagerInit()
     {
-        LabDataManager = new LabDataManager();
+        // LabDataManager = new LabDataManager();
+        Debug.Log("LabDataManager init");
     }
 
     IEnumerator IGameManager.ManagerDispose()
