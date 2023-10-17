@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "PA7J10MGG8280008W",
         "name": "com.xrlab.SayIt",
-        "processId": 18964,
+        "processId": 8207,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -420,6 +420,24 @@
             "deviceId": "PA7J10MGG8280008W",
             "name": "com.xrlab.SayIt",
             "processId": 18964,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 5749,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 7857,
+            "exited": false
+        },
+        {
+            "deviceId": "PA7J10MGG8280008W",
+            "name": "com.xrlab.SayIt",
+            "processId": 8207,
             "exited": false
         }
     ],

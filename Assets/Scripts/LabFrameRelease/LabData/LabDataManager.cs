@@ -153,7 +153,7 @@ namespace LabData
         {
             // _dataQueue.Enqueue(data);
             
-            string path = Path.Combine(_saveDataPath, "AphasiaVRPico_AphasiaSayItVR_"+ "1196_" + data.GetType().Name + ".json");
+            string path = Path.Combine(_saveDataPath, "aphasiavrpico_AphasiaSayItVR_"+ "1196_" + data.GetType().Name + ".json");
             Debug.Log(path);
             File.AppendAllText(path, data.ToJson() + "\r\n"); // JC ver
             GetDataAction?.Invoke(data);
