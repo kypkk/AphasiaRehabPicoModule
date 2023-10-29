@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PXR_PlatformSetting
   m_EditorClassIdentifier: 
   entitlementCheckSimulation: 0
-  startTimeEntitlementCheck: 1
+  startTimeEntitlementCheck: 0
   appID: kypkk_pico
   deviceSN: []
