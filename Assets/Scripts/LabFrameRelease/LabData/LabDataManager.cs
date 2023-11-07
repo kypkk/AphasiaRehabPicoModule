@@ -152,8 +152,11 @@ namespace LabData
         public void SendData(LabDataBase data)
         {
             // _dataQueue.Enqueue(data);
-            
-            string path = Path.Combine(_saveDataPath, "aphasiavrpico_AphasiaSayItVR_"+ "1196_" + data.GetType().Name + ".json");
+            string _forsendDataPath = Path.Combine("/storage/emulated/0/LabData/AphasiaSayItVR/ForSend", DateTime.Now.ToString("yyyyMMddHH"));
+            LabTools.CreatSaveDataFolder(_forsendDataPath);
+            string _forstoreDataPath = Path.Combine("/storage/emulated/0/LabData/AphasiaSayItVR/ForStore", DateTime.Now.ToString("yyyyMMddHH"));
+            LabTools.CreatSaveDataFolder(_forstoreDataPath);
+            string path = Path.Combine(_forsendDataPath, "aphasiavrpico_AphasiaSayItVR_"+ "1196_" + data.GetType().Name + ".json");
             Debug.Log(path);
             File.AppendAllText(path, data.ToJson() + "\r\n"); // JC ver
             GetDataAction?.Invoke(data);

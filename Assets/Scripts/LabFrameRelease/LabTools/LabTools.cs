@@ -24,12 +24,12 @@ namespace LabData
             return data is T @base ? @base : null;
         }
 
-        public static string DataPath => Path.Combine("/storage/emulated/0/LabData/AphasiaSayItVR/ForSend", DateTime.Now.ToString("yyyyMMddHH"))
-// #if UNITY_ANDROID
-//             Application.persistentDataPath +"/LabData/ForSend"
-// #else        
-//             Application.dataPath + "/LabData/ForSend"
-// #endif            
+        public static string DataPath => // Path.Combine("/storage/emulated/0/LabData/AphasiaSayItVR/ForSend", DateTime.Now.ToString("yyyyMMddHH"))
+#if UNITY_ANDROID
+            Application.persistentDataPath + "/LabData/ForSend"
+#else        
+            Application.dataPath + "/LabData/ForSend"
+#endif            
         ;
 
         /// <summary>
