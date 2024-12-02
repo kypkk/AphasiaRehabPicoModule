@@ -1,2 +1,2 @@
-# kypkk_pico
-pico aphasia project
+# Aphasia Rehab Pico Module
+
